@@ -8,7 +8,7 @@ import {
 import Color from '../tools/Color'
 import cancellablePromise from '../tools/cancellablePromise'
 
-class Profile extends Component {
+class Login extends Component {
   pendingPromises = []
   appendPendingPromise = promise => {
     this.pendingPromises = [...this.pendingPromises, promise]
@@ -51,21 +51,26 @@ class Profile extends Component {
     StatusBar.setBarStyle(this.statusBar.barStyle, this.statusBar.isAnimation)
     StatusBar.setTranslucent(this.statusBar.isTranslucent)
     const { route } = this.props
-    const { backHandlerPrevScreen } = route.params
-    if (backHandlerPrevScreen) {
-      backHandlerPrevScreen.remove()
+    console.log(route)
+    if(route.params) {
+      const { backHandlerPrevScreen } = route.params
+      if (backHandlerPrevScreen) {
+        backHandlerPrevScreen.remove()
+      }
     }
     BackHandler.addEventListener('hardwareBackPress', this._backHandler)
   }
 
   componentWillUnmount() {
     const { route } = this.props
-    const { setStatusBarStyle, backHandlerPrevScreen } = route.params
-    if (setStatusBarStyle) {
-      setStatusBarStyle()
-    }
-    if (backHandlerPrevScreen) {
-      backHandlerPrevScreen.add()
+    if(route.params) {
+      const { setStatusBarStyle, backHandlerPrevScreen } = route.params
+      if (setStatusBarStyle) {
+        setStatusBarStyle()
+      }
+      if (backHandlerPrevScreen) {
+        backHandlerPrevScreen.add()
+      }
     }
     this.pendingPromises.map(p => {
       this.removePendingPromise(p)
@@ -78,11 +83,11 @@ class Profile extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Hello world!</Text>
       </View>
     )
   }
 }
 
-export default Profile
+export default Login
