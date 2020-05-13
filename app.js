@@ -8,7 +8,7 @@ import {
 import Color from '../tools/Color'
 import cancellablePromise from '../tools/cancellablePromise'
 
-class Login extends Component {
+class App extends Component {
   pendingPromises = []
   appendPendingPromise = promise => {
     this.pendingPromises = [...this.pendingPromises, promise]
@@ -42,7 +42,8 @@ class Login extends Component {
             }
           }
         })
-      }
+      },
+      ...this.props.navigation
     }
   }
 
@@ -90,4 +91,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default App
