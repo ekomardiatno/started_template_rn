@@ -25,6 +25,7 @@ class App extends Component {
       isTranslucent: true
     }
     this.navigation = {
+      ...this.props.navigation,
       navigate: (screen, attr = {}) => {
         this.props.navigation.navigate(screen, {
           ...attr,
@@ -42,8 +43,7 @@ class App extends Component {
             }
           }
         })
-      },
-      ...this.props.navigation
+      }
     }
   }
 
