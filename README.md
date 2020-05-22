@@ -1,3 +1,35 @@
+## Define and color tool
+```javascript
+const Color = {
+  theme: '#01a185',
+  primary: '#394dbd',
+  info: '#24b4ce',
+  default: '#797979',
+  success: '#2c9e6d',
+  warning: '#ff9510',
+  danger: '#d23454',
+  black: '#000',
+  textColor: '#212529',
+  textMuted: '#868e96',
+  grayDarker: '#5e5e5e',
+  grayDark: '#a5a5a5',
+  gray: '#d4d4d4',
+  grayLight: '#e8e8e8',
+  grayLighter: '#f5f5f5',
+  borderColor: '#eee',
+  white: '#fff'
+}
+
+export default Color
+
+export function colorYiq(hex) {
+  var r = parseInt(hex.substr(1, 2), 16),
+      g = parseInt(hex.substr(3, 2), 16),
+      b = parseInt(hex.substr(5, 2), 16),
+      yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+  return (yiq >= 196) ? Color.textColor : Color.white;
+}
+```
 ## Cancellable promise
 ```javascript
 const cancellablePromise = (promise) => {
