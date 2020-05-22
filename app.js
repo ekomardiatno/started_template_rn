@@ -52,7 +52,6 @@ class App extends Component {
     StatusBar.setBarStyle(this.statusBar.barStyle, this.statusBar.isAnimation)
     StatusBar.setTranslucent(this.statusBar.isTranslucent)
     const { route } = this.props
-    console.log(route)
     if(route.params) {
       const { backHandlerPrevScreen } = route.params
       if (backHandlerPrevScreen) {
@@ -80,6 +79,7 @@ class App extends Component {
   }
 
   _backHandler = () => {
+    return false
   }
 
   render() {
